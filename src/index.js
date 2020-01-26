@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import '../src/index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Egy darab Form komponensből álljon.
+// A komponens rendereljen ki egy .container divet, benne két testvér divvel: .form-input és .form-output.
+// A .form-input-ban legyen egy form, egy text input mezővel, ami a "Name" labelt viseli.
+// A végeredmény nézzen ki így:
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class Form extends React.Component {
+    render(){
+        return(
+            <div className="container">
+                <div className="form-input">
+                <h1>Form</h1>
+                    <form>
+                        <label htmlFor="Name">Name: </label>
+                        <input type="text" name="Name" className="text"/>
+                    </form>
+                </div>
+                <div className="form-output">
+                    <h1>Output</h1>
+                </div>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Form />, document.getElementById('root'));
+
+export default Form;
