@@ -28,19 +28,29 @@ class Form extends React.Component {
         newName.name=event.target.value;
         this.setState({
             person: newName,
-        }
-        )
-        
+        })
     }
+
+    submitCatcher = event => {
+        event.preventDefault();
+        alert ("We are submitting");
+        const emptyName={...this.state.person};
+        emptyName.name="";
+        this.setState({
+            person: emptyName,
+        })
+    }
+
 
     render(){
         return(
             <div className="container">
                 <div className="form-input">
                 <h1>Form</h1>
-                    <form>
+                    <form onSubmit={this.submitCatcher}>
                         <label htmlFor="Name">Name: </label>
-                        <input type="text" name="Name" className="text" onChange={this.nameChanger} />
+                        <input type="text" name="Name" className="text" onChange={this.nameChanger} value={this.state.person.name} />
+                        <input type="submit"/>
                     </form>
                 </div>
                 <div className="form-output">
