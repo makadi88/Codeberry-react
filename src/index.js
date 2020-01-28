@@ -12,30 +12,51 @@ class Form extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            person: {
-                name: "Piroska",
+
+                firstName: "Piroska",
+                lastName: "Farkasi",
                 age: 18,
                 favFood:"Lasagne"
-            }
         }
     }
 
     nameChanger = event => {
-        const newName={...this.state.person};
-        newName.name=event.target.value;
+        //  const newName={...this.state.person};
+        //  newName.firstName=event.target.value;
+        //      this.setState({
+        //      [event.target.name]: event.target.value,
+        //  })
+        const name = event.target.name;
+        const value = event.target.value;
+    
         this.setState({
-            person: newName,
-        })
+          [name]: value,
+        });
+
     }
 
     submitCatcher = event => {
+        // event.preventDefault();
+        // alert ("We are submitting");
+        // const emptyData={...this.state};
+        // emptyData.firstName=" ";
+        // emptyData.lastName=" ";
+        // emptyData.age=" ";
+        // emptyData.favFood=" ";
+        // this.setState({
+        //     firstName: emptyData,
+        //     lastName: emptyData,
+        //     age: emptyData,
+        //     favFood: emptyData
+        // })
         event.preventDefault();
-        alert ("We are submitting");
-        const emptyName={...this.state.person};
-        emptyName.name="";
+        alert('We are submitting!');
         this.setState({
-            person: emptyName,
-        })
+          firstName: '',
+          lastName: '',
+          age: '',
+          favFood: '',
+        });
     }
 
 
@@ -45,14 +66,33 @@ class Form extends React.Component {
                 <div className="form-input">
                 <h1>Form</h1>
                     <form onSubmit={this.submitCatcher}>
-                        <label htmlFor="Name">Name: </label>
-                        <input type="text" name="Name" className="text" onChange={this.nameChanger} value={this.state.person.name} />
+
+                        <label htmlFor="firstName">First Name: </label>
+                        <input type="text" name="firstName" className="text" onChange={this.nameChanger} value={this.state.firstName} /><br/>
+                        <label htmlFor="lastName">Last Name: </label>
+                        <input type="text" name="lastName" className="text" onChange={this.nameChanger} value={this.state.lastName} /><br/>
+                        <label htmlFor="age">Age: </label>
+                        <input type="text" name="age" className="text" onChange={this.nameChanger} value={this.state.age} /><br/>
+                        <label htmlFor="favFood">Favourite food: </label>
+                        <input type="text" name="favFood" className="text" onChange={this.nameChanger} value={this.state.favFood} /><br/>
+
                         <input type="submit"/>
                     </form>
                 </div>
                 <div className="form-output">
                     <h1>Output</h1>
-                    <p>Name: {this.state.person.name}</p>
+                    <p>
+                        <strong>First name:</strong> {this.state.firstName}
+                    </p>
+                    <p>
+                        <strong>Last name:</strong> {this.state.lastName}
+                    </p>
+                    <p>
+                        <strong>Age:</strong> {this.state.age}
+                    </p>
+                    <p>
+                        <strong>Favourite Food:</strong> {this.state.favFood}
+                    </p>
                 </div>
             </div>
         )
