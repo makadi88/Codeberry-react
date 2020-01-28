@@ -12,14 +12,9 @@ class Form extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            person: {
                 name: "Piroska",
                 age: 18,
                 favFood:"Lasagne"
-            },
-            person2: {
-                name: "Béla"
-            }
         }
     }
 
@@ -35,6 +30,10 @@ class Form extends React.Component {
     submitCatcher = event => {
         event.preventDefault();
         alert ("We are submitting");
+        this.setState({
+            name: '',
+          });
+        
     }
 
     render(){
@@ -44,13 +43,13 @@ class Form extends React.Component {
                 <h1>Form</h1>
                     <form onSubmit={this.submitCatcher}>
                         <label htmlFor="Name">Name: </label>
-                        <input type="text" name="Name" className="text" onChange={this.nameChanger} />
+                        <input type="text" name="Name" className="text" onChange={this.nameChanger} value={this.state.name} />
                         <input type="submit"/>
                     </form>
                 </div>
                 <div className="form-output">
                     <h1>Output</h1>
-                    <p>Name: {this.state.person.name}</p>
+                    <p>Name: {this.state.name}</p>
                 </div>
             </div>
         )
