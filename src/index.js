@@ -12,14 +12,9 @@ class Form extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            person: {
                 name: "Piroska",
                 age: 18,
                 favFood:"Lasagne"
-            },
-            person2: {
-                name: "Béla"
-            }
         }
     }
 
@@ -55,7 +50,7 @@ class Form extends React.Component {
                 </div>
                 <div className="form-output">
                     <h1>Output</h1>
-                    <p>Name: {this.state.person.name}</p>
+                    <p>Name: {this.state.name}</p>
                 </div>
             </div>
         )
